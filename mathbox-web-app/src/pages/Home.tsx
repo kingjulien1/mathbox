@@ -1,11 +1,12 @@
 import React from "react";
-import { Container } from "../components/Layout";
 import { ReactComponent as Logo } from "../assets/package.svg";
-import { ButtonDark, ButtonLight } from "../components/Button";
+import { Button } from "../components/Button";
+import { useHistory } from "react-router-dom";
 
 function Home() {
+  const { push } = useHistory();
   return (
-    <Container>
+    <div className="bg-gray-100 p-4 h-screen flex">
       <div className="flex flex-col w-full">
         <div className="m-auto">
           <div className="flex justify-center">
@@ -20,11 +21,21 @@ function Home() {
               solve problems quickly and with delight.
             </p>
           </div>
-          <div className="flex justify-center mt-20 align-middle">
-            <div className=" sm:w-1/3 px-4 w-full flex justify-between">
-              <ButtonDark>Sign up</ButtonDark>
+          <div className="flex justify-center">
+            <div className="mt-20 px-4 w-full flex flex-col sm:flex-row sm: justify-between sm:w-1/2">
+              <Button
+                className="bg-gray-800 text-gray-100"
+                onClick={() => push("/signup")}
+              >
+                Sign Up
+              </Button>
               <span className="self-center font-bold text-gray-500">or</span>
-              <ButtonLight>Sign in</ButtonLight>
+              <Button
+                className="bg-gray-100 text-gray-800"
+                onClick={() => push("/signin")}
+              >
+                Sign in
+              </Button>
             </div>
           </div>
         </div>
@@ -46,7 +57,7 @@ function Home() {
           </p>
         </div>
       </div>
-    </Container>
+    </div>
   );
 }
 
