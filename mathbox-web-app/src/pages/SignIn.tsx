@@ -3,14 +3,14 @@ import { Button } from "../components/Button";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
-export default function SignUp() {
+export default function SignIn() {
   const { handleSubmit, register, errors } = useForm();
   const onSubmit = (values: any) => console.log(values);
   return (
     <div className="bg-gray-100 p-4 pt-40 h-screen flex">
       <div className="flex flex-col w-full">
         <h1 className="text-5xl text-gray-800 font-bold text-center">
-          Create your Account
+          Sign In To Mathbox
         </h1>
         <div className="flex flex-col justify-center mt-10">
           <form
@@ -45,11 +45,11 @@ export default function SignUp() {
                 required: "password required",
               })}
             />
-            <Button className="mt-3 bg-gray-800 text-gray-100">Sign Up</Button>
+            <Button className="mt-3 bg-gray-800 text-gray-100">Sign In</Button>
             <label className="mt-1 text-gray-500 text-center">
-              already have an account?
-              <Link className="underline text-gray-700" to="/signin">
-                Sign In here.
+              don`t have an account yet?
+              <Link className="underline text-gray-700" to="/signup">
+                Sign Up here.
               </Link>
             </label>
           </form>
@@ -76,7 +76,7 @@ export default function SignUp() {
                   />
                 </svg>
               </span>
-              <span>Sign Up With Google</span>
+              <span>Sign In With Google</span>
             </Button>
           </div>
         </div>

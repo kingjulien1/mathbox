@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export const Button: React.FunctionComponent<{
-  className: string;
+  className?: string;
   onClick?:
     | ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
     | undefined;
