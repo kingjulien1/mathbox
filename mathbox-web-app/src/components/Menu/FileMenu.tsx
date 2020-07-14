@@ -1,15 +1,36 @@
 import * as React from "react";
-import { ReactComponent as HamburgerMenu } from "../../assets/img/hamburger-menu.svg";
+import { ReactComponent as FolderOpen } from "../../assets/img/folder-open.svg";
+import { ReactComponent as Close } from "../../assets/img/close.svg";
+import { ReactComponent as Export } from "../../assets/img/export.svg";
+import { ReactComponent as Grid } from "../../assets/img/grid.svg";
 
 export const FileMenu: React.FunctionComponent<{
   className?: string;
 }> = function ({ className }) {
+  const [isOpen, setIsOpen] = React.useState<boolean>(true);
   return (
     <div
-      className={`absolute z-10 top-0 right-0 mt-20 mr-4 bg-gray-200 rounded-lg p-2 text-gray-700 cursor-pointer shadow ${className}`}
+      className={`z-10 top-0 right-0 mt-20 mr-4 inline-block absolute p-2 text-gray-700 cursor-pointer ${className}`}
     >
-      <div>
-        <HamburgerMenu className="fill-current h-6 w-6"></HamburgerMenu>
+      <Close
+        className={`top-0 fill-current h-6 w-6 mb-10 ${
+          isOpen ? "block" : "hidden"
+        } sm:hidden`}
+        onClick={() => setIsOpen((isopen) => !isopen)}
+      ></Close>
+      <FolderOpen
+        className={`top-0 fill-current h-6 w-6 ${
+          isOpen ? "hidden" : "block"
+        } sm:hidden `}
+        onClick={() => setIsOpen((isopen) => !isopen)}
+      ></FolderOpen>
+      <div
+        className={`fill-current h-6 w-6 ${
+          isOpen ? "inline-block" : "hidden"
+        } sm:block`}
+      >
+        <Export className="fill-current h-6 w-6 mb-10 "></Export>
+        <Grid className="fill-current h-6 w-6 mb-10"></Grid>
       </div>
     </div>
   );
