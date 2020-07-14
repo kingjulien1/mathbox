@@ -9,24 +9,49 @@ export const Collaborators: React.FunctionComponent<{
   const [isOpen, setIsOpen] = React.useState<boolean>(true);
   return (
     <div
-      className={`z-10 bottom-0 right-0 mb-4 mr-4 md:mr-40 absolute p-2 text-gray-700 cursor-pointer ${className}`}
+      className={`z-10 bottom-0 right-0 mb-4 mr-4 md:mr-40 absolute p-2 text-gray-700 cursor-pointer w-10 ${className}`}
     >
       <div
-        className={`fill-current h-6 w-6 ${
+        className={`fill-current h-6 w-6 inline-block ${
           isOpen ? "inline-block" : "hidden"
-        } sm:inline-block`}
+        } md:inline-block`}
       >
         <div>
-          <PersonAdd className="h-6 w-6 mb-4 relative inline-block"></PersonAdd>
-
-          <div className="flex ">
-            <Avatar className="h-6 w-6 mb-4 relative inline-block "></Avatar>
+          <div className="relative mb-4 inline-block md:text-gray-200 md:rounded-full md:border-gray-300 md:border-2 md:p-1 md:px-4 md:bg-gray-800">
+            <div className="md:flex">
+              <PersonAdd className="h-6 w-6"></PersonAdd>
+              <p className="hidden md:block ml-2">Share</p>
+            </div>
+          </div>
+          <div className="relative mb-4 inline-block md:flex">
+            <Avatar
+              className="h-6 w-6"
+              url="https://vignette.wikia.nocookie.net/house-of-cards/images/1/17/Francis_Underwood.jpg/revision/latest/top-crop/width/360/height/450?cb=20170625143104&path-prefix=de"
+            ></Avatar>
             <p className="hidden md:block ml-2 text-gray-500 text-base italic">
               You
             </p>
           </div>
-          <Avatar className="h-6 w-6 mb-4 relative inline-block"></Avatar>
-          <Avatar className="h-6 w-6 mb-4 relative inline-block"></Avatar>
+          <div className="relative mb-4 inline-block md:flex">
+            <Avatar
+              className="h-6 w-6"
+              name="Zoe Barnes"
+              url="https://i.pinimg.com/originals/97/14/37/97143785239ca2686ef7f5003babed7d.jpg"
+            ></Avatar>
+            <p className="hidden md:block ml-2 text-gray-500 text-base italic">
+              Zoe
+            </p>
+          </div>
+          <div className="relative mb-4 inline-block md:flex">
+            <Avatar
+              className="h-6 w-6"
+              name="Claire Underwood"
+              url="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F35%2F2014%2F03%2F16182657%2Fcarrie-underwood-promo-700.jpg&q=85"
+            ></Avatar>
+            <p className="hidden md:block ml-2 text-gray-500 text-base italic">
+              Claire
+            </p>
+          </div>
         </div>
       </div>
       <Team

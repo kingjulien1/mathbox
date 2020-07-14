@@ -14,7 +14,10 @@ export default function NavBar() {
           </p>
           <Star className="w-5 h-5 ml-2 text-gray-600 fill-current hidden sm:block"></Star>
         </div>
-        <Avatar className="h-8 w-8"></Avatar>
+        <Avatar
+          className="h-8 w-8"
+          url="https://vignette.wikia.nocookie.net/house-of-cards/images/1/17/Francis_Underwood.jpg/revision/latest/top-crop/width/360/height/450?cb=20170625143104&path-prefix=de"
+        ></Avatar>
       </div>
     </div>
   );
