@@ -1,5 +1,5 @@
 import React from "react";
-import { ReactComponent as Logo } from "../assets/package.svg";
+import { ReactComponent as Logo } from "../assets/img/package.svg";
 import { Button } from "../components/Button";
 import { useHistory } from "react-router-dom";
 
@@ -43,7 +43,7 @@ function Home() {
           <span className="mt-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
+              viewBox="0 0 24 24viewBox="
               fill="black"
               width="18px"
               height="18px"
