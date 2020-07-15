@@ -1,9 +1,10 @@
 import React, { FunctionComponent, useRef } from "react";
-import { useMouseEvents } from "./EventHandlers";
+import { useCanvas, useCanvasResize } from "../hooks/Canvas";
 
 const Canvas: FunctionComponent = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { begin, finish, draw } = useMouseEvents(canvasRef);
+  const { begin, finish, draw } = useCanvas(canvasRef);
+  useCanvasResize(canvasRef);
 
   return (
     <canvas
