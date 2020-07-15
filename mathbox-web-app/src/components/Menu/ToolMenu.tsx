@@ -10,10 +10,10 @@ import { ReactComponent as Close } from "../../assets/img/close.svg";
 export const ToolsMenu: React.FunctionComponent<{
   className?: string;
 }> = function ({ className }) {
-  const [isOpen, setIsOpen] = React.useState<boolean>(true);
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
   return (
     <div
-      className={`z-10 top-0 left-0 mt-20 ml-4 inline-block absolute p-2 text-gray-700 cursor-pointer ${className}`}
+      className={`z-10 top-0 left-0 mt-20 ml-4 inline-block absolute p-2 text-gray-700 cursor-pointer bg-gray-300 rounded-lg ${className}`}
     >
       <Close
         className={`top-0 fill-current h-6 w-6 mb-10 ${
@@ -30,13 +30,13 @@ export const ToolsMenu: React.FunctionComponent<{
       <div
         className={`fill-current h-6 w-6 ${
           isOpen ? "inline-block" : "hidden"
-        } sm:block`}
+        } sm:inline-block`}
       >
-        <Drag className="fill-current h-6 w-6 mb-10 "></Drag>
-        <Pen className="fill-current h-6 w-6 mb-10"></Pen>
-        <Erase className="fill-current h-6 w-6 mb-10"></Erase>
-        <Palette className="fill-current h-6 w-6 mb-10"></Palette>
-        <Cube className="fill-current h-6 w-6 mb-10"></Cube>
+        <Drag className="fill-current h-6 w-6 mb-10 inline-block "></Drag>
+        <Pen className="fill-current h-6 w-6 mb-10 inline-block"></Pen>
+        <Erase className="fill-current h-6 w-6 mb-10 inline-block"></Erase>
+        <Palette className="fill-current h-6 w-6 mb-10 inline-block"></Palette>
+        <Cube className="fill-current h-6 w-6 inline-block"></Cube>
       </div>
     </div>
   );

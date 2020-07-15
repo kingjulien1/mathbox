@@ -6,10 +6,10 @@ import Avatar from "../Avatar";
 export const Collaborators: React.FunctionComponent<{
   className?: string;
 }> = function ({ className }) {
-  const [isOpen, setIsOpen] = React.useState<boolean>(true);
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
   return (
     <div
-      className={`z-10 bottom-0 right-0 mb-4 mr-4 md:mr-40 absolute p-2 text-gray-700 cursor-pointer w-10 ${className}`}
+      className={`z-10 bottom-0 right-0 mb-4 mr-4 md:mr-40 absolute p-2 text-gray-700 cursor-pointer w-10 bg-gray-300 rounded-lg md:rounded-none md:bg-transparent ${className}`}
     >
       <div
         className={`fill-current h-6 w-6 inline-block ${
@@ -28,8 +28,8 @@ export const Collaborators: React.FunctionComponent<{
               className="h-6 w-6"
               url="https://vignette.wikia.nocookie.net/house-of-cards/images/1/17/Francis_Underwood.jpg/revision/latest/top-crop/width/360/height/450?cb=20170625143104&path-prefix=de"
             ></Avatar>
-            <p className="hidden md:block ml-2 text-gray-500 text-base italic">
-              You
+            <p className="hidden whitespace-no-wrap md:block ml-2 text-gray-500 text-base italic">
+              Frank (You)
             </p>
           </div>
           <div className="relative mb-4 inline-block md:flex">
@@ -55,7 +55,7 @@ export const Collaborators: React.FunctionComponent<{
         </div>
       </div>
       <Team
-        className={`top-0 fill-current h-6 w-6 md:hidden mt-2`}
+        className={`top-0 fill-current h-6 w-6 md:hidden`}
         onClick={() => setIsOpen((isopen) => !isopen)}
       ></Team>
     </div>
