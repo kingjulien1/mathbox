@@ -14,8 +14,8 @@ const Canvas: FunctionComponent = () => {
       onMouseUp={finish}
       onMouseOut={finish}
       //mobile
-      onTouchStart={undefined}
-      onTouchMove={undefined}
+      onTouchStart={begin}
+      onTouchMove={draw}
       onTouchCancel={finish}
       onTouchEnd={finish}
       width={window.innerWidth}

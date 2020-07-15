@@ -32,43 +32,29 @@ export const useMouseEvents = (canvasRef: RefObject<HTMLCanvasElement>) => {
     canvasRef.current?.offsetLeft || 0,
     canvasRef.current?.offsetTop || 66,
   ];
+  const findPosition = (
+    event: MouseEvent | TouchEvent
+  ): { x: number; y: number } => {
+    let x = (event as TouchEvent).changedTouches
+      ? (event as TouchEvent).changedTouches[0].pageX
+      : (event as MouseEvent).pageX;
+
+    let y = (event as TouchEvent).changedTouches
+      ? (event as TouchEvent).changedTouches[0].pageY
+      : (event as MouseEvent).pageY;
+    return { x: x - offsetLeft, y: y - offsetTop };
+  };
   const { beginDrawing, finishDrawing, draw } = useDrawingTools(context);
-  const begin = (event: MouseEvent): void => {
-    const x = event.pageX - offsetLeft;
-    const y = event.pageY - offsetTop;
+  const begin = (event: MouseEvent | TouchEvent): void => {
+    let { x, y } = findPosition(event);
     beginDrawing(x, y);
   };
   console.log({ offsetTop });
-  const drawing = (event: MouseEvent): void => {
+  const drawing = (event: MouseEvent | TouchEvent): void => {
     //draw movement on canvas
-    const x = event.pageX - offsetLeft;
-    const y = event.pageY - offsetTop;
+    let { x, y } = findPosition(event);
     draw(x, y);
   };
 
   return { begin, finish: finishDrawing, draw: drawing };
-};
-
-export const useTouchEvents = (canvasRef: RefObject<HTMLCanvasElement>) => {
-  const [isDrawing, setIsDrawing] = useState<Boolean>(false);
-  const onTouchStart = (event: TouchEvent<HTMLCanvasElement>): void => {
-    //begins drawing
-    setIsDrawing(true);
-    console.log("starts drawing");
-  };
-
-  const onTouchMove = (event: TouchEvent<HTMLCanvasElement>): void => {
-    //draws
-    if (!isDrawing) return;
-    console.log("draws");
-  };
-
-  const onTouchEnd = (event: TouchEvent<HTMLCanvasElement>): void => {
-    //ends drawing
-    setIsDrawing(false);
-    console.log("ends drawing");
-  };
-  const onTouchCancel = onTouchEnd;
-
-  return { onTouchStart, onTouchMove, onTouchCancel, onTouchEnd };
 };
