@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useRef } from "react";
-import { useCanvas, useCanvasResize } from "../hooks/Canvas";
+import { useCanvas, useCanvasResize } from "../../hooks/Canvas";
 
 const Canvas: FunctionComponent = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
