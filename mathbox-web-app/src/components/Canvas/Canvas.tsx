@@ -1,10 +1,13 @@
 import React, { FunctionComponent, useRef } from "react";
-import { useCanvas, useCanvasResize } from "../../hooks/Canvas";
+import { useCanvasResizingEvent } from "../../hooks/Canvas/useCanvasResize";
+import { useCanvasEventListners } from "../../hooks/Canvas/useCanvasEventListeners";
 
 const Canvas: FunctionComponent = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { begin, finish, draw } = useCanvas(canvasRef);
-  useCanvasResize(canvasRef);
+  //event listeneres for canvas
+  const { begin, finish, draw } = useCanvasEventListners(canvasRef);
+  //register on resize event
+  useCanvasResizingEvent(canvasRef);
 
   return (
     <canvas

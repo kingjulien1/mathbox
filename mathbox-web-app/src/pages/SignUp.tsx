@@ -7,8 +7,8 @@ export default function SignUp() {
   const { handleSubmit, register, errors } = useForm();
   const onSubmit = (values: any) => console.log(values);
   return (
-    <div className="bg-gray-100 p-4 pt-40 h-screen flex">
-      <div className="flex flex-col w-full">
+    <div className="bg-gray-100 p-4 pt-40 h-screen justify-center align-middle flex">
+      <div className="flex flex-col w-full max-w-md">
         <h1 className="text-5xl text-gray-800 font-bold text-center">
           Create your Account
         </h1>

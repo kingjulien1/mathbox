@@ -1,16 +1,24 @@
 import React from "react";
 import { ReactComponent as Logo } from "../assets/img/package.svg";
+import { ReactComponent as Add } from "../assets/img/add.svg";
 import { Button } from "../components/Button";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 function Home() {
   const { push } = useHistory();
   return (
-    <div className="bg-gray-100 p-4 h-screen flex">
+    <div className=" p-4 h-screen flex">
       <div className="flex flex-col w-full">
-        <div className="m-auto">
+        <div className="m-auto text-gray-500">
           <div className="flex justify-center">
-            <Logo className="m-3 ml-10"></Logo>
+            <span>
+              <Link to="/board">
+                <Add className="text-gray-900 fill-current w-10 h-10 hover:shadow-outline focus:shadow-outline"></Add>
+              </Link>
+            </span>
+          </div>
+          <div className="flex justify-center">
+            <Logo className="m-3  h-32 w-32 text-gray-900 fill-current"></Logo>
           </div>
           <div className="flex justify-center">
             <h1 className="text-5xl text-gray-800 font-black">Mathbox.io</h1>
@@ -43,7 +51,7 @@ function Home() {
           <span className="mt-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24viewBox="
+              viewBox="0 0 24 24"
               fill="black"
               width="18px"
               height="18px"
