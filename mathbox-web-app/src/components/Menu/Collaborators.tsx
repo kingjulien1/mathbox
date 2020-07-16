@@ -3,14 +3,10 @@ import { ReactComponent as Team } from "../../assets/img/team.svg";
 import { ReactComponent as PersonAdd } from "../../assets/img/person-add.svg";
 import Avatar from "../Avatar";
 
-export const Collaborators: React.FunctionComponent<{
-  className?: string;
-}> = function ({ className }) {
+export const Collaborators: React.FunctionComponent = function () {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
   return (
-    <div
-      className={`z-10 bottom-0 right-0 mb-4 mr-4 md:mr-40 absolute p-2 text-gray-700 cursor-pointer w-10 bg-gray-300 rounded-lg md:rounded-none md:bg-transparent ${className}`}
-    >
+    <div className="z-10 bottom-0 right-0 mb-4 mr-4 md:mr-40 absolute p-2 text-gray-700 cursor-pointer w-10 bg-gray-100 shadow-lg md:shadow-none rounded-lg md:rounded-none md:bg-transparent">
       <div
         className={`fill-current h-6 w-6 inline-block ${
           isOpen ? "inline-block" : "hidden"

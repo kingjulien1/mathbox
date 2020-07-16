@@ -12,9 +12,7 @@ export const ToolsMenu: React.FunctionComponent<{
 }> = function ({ className }) {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
   return (
-    <div
-      className={`z-10 top-0 left-0 mt-20 ml-4 inline-block absolute p-2 text-gray-700 cursor-pointer bg-gray-300 rounded-lg ${className}`}
-    >
+    <div className="z-10 top-0 left-0 mt-20 ml-4 inline-block absolute p-2 text-gray-700 cursor-pointer bg-gray-200 rounded-lg shadow-lg">
       <Close
         className={`top-0 fill-current h-6 w-6 mb-10 ${
           isOpen ? "block" : "hidden"

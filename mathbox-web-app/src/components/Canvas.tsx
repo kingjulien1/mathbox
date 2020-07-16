@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useRef } from "react";
-import { useCanvasResizingEvent } from "../../hooks/Canvas/useCanvasResize";
-import { useCanvasEventListners } from "../../hooks/Canvas/useCanvasEventListeners";
+import { useCanvasResizingEvent } from "../hooks/Canvas/useCanvasResize";
+import { useCanvasEventListners } from "../hooks/Canvas/useCanvasEventListeners";
 
 const Canvas: FunctionComponent = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -23,7 +23,7 @@ const Canvas: FunctionComponent = () => {
       onTouchCancel={finish}
       onTouchEnd={finish}
       width={window.innerWidth}
-      height={window.innerHeight - 64}
+      height={window.innerHeight}
     ></canvas>
   );
 };
