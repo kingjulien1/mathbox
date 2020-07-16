@@ -1,8 +1,7 @@
 import * as React from "react";
-import { Button } from "../components/Button";
+import { Button, SignInWtihGoogleButton } from "../components/Button";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { ReactComponent as Google } from "../assets/img/google.svg";
 
 export default function SignUp() {
   const { handleSubmit, register, errors } = useForm();
@@ -57,12 +56,7 @@ export default function SignUp() {
           </form>
           <span className="text-center text-gray-500">or</span>
           <div className="m-auto flex flex-col w-full p-4">
-            <Button className="flex flex-row justify-center">
-              <span className="ml-4">
-                <Google className="w-5 h-5 mt-2 mr-4"></Google>
-              </span>
-              <span>Sign In With Google</span>
-            </Button>
+            <SignInWtihGoogleButton className="flex flex-row justify-center"></SignInWtihGoogleButton>
           </div>
         </div>
       </div>

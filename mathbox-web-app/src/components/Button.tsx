@@ -1,6 +1,9 @@
 import * as React from "react";
+import firebase from "firebase/app";
+import { auth } from "../firebase";
+import { ReactComponent as Google } from "../assets/img/google.svg";
 
-export const Button: React.FunctionComponent<{
+const Button: React.FunctionComponent<{
   className?: string;
   onClick?:
     | ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
@@ -13,3 +16,31 @@ export const Button: React.FunctionComponent<{
     {children}
   </button>
 );
+
+const SignInWtihGoogleButton: React.FunctionComponent<{
+  className?: string;
+  onClick?:
+    | ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
+    | undefined;
+}> = ({ children, className, onClick }) => {
+  const signInWithPopUp = async () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    try {
+      await auth.signInWithPopup(provider);
+      //TODO redirect to board
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  return (
+    <Button className={` ${className}`} onClick={signInWithPopUp}>
+      <span className="ml-4">
+        <Google className="w-5 h-5 mt-2 mr-4"></Google>
+      </span>
+      <span>Sign In With Google</span>
+      {children}
+    </Button>
+  );
+};
+
+export { Button, SignInWtihGoogleButton };

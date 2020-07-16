@@ -16,3 +16,5 @@ export const useLoggedInUser = () => {
   }, []);
   return { user, isLoading };
 };
+
+export const useSignInWithEmailAndPassword: {} = () => {};

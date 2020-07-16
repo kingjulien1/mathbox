@@ -1,10 +1,7 @@
 import * as React from "react";
-import { Button } from "../components/Button";
+import { Button, SignInWtihGoogleButton } from "../components/Button";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import firebase from "firebase/app";
-import { ReactComponent as Google } from "../assets/img/google.svg";
-import { auth } from "../firebase";
 
 interface SignInProps {
   email?: string;
@@ -15,15 +12,6 @@ export default function SignIn() {
   const { handleSubmit, register, errors } = useForm();
   const signInWithEmailAndPassword = (values: SignInProps) => {
     //TODO implement sign in with email & password
-  };
-  const signInWithPopUp = async () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    try {
-      await auth.signInWithPopup(provider);
-      //TODO redirect to board
-    } catch (e) {
-      console.error(e);
-    }
   };
   return (
     <div className="bg-gray-100 p-4 pt-40 h-screen justify-center align-middle flex">
@@ -76,15 +64,7 @@ export default function SignIn() {
           </form>
           <span className="text-center text-gray-500">or</span>
           <div className="m-auto flex flex-col w-full p-4">
-            <Button
-              className="flex flex-row justify-center"
-              onClick={signInWithPopUp}
-            >
-              <span className="ml-4">
-                <Google className="w-5 h-5 mt-2 mr-4"></Google>
-              </span>
-              <span>Sign In With Google</span>
-            </Button>
+            <SignInWtihGoogleButton className="flex flex-row justify-center"></SignInWtihGoogleButton>
           </div>
         </div>
       </div>
