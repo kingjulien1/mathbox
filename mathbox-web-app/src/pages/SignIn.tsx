@@ -1,17 +1,31 @@
 import * as React from "react";
 import { Button, SignInWtihGoogleButton } from "../components/Button";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { useToasts } from "react-toast-notifications";
+import { Link, useHistory } from "react-router-dom";
+import { auth } from "../firebase";
 
 interface SignInProps {
-  email?: string;
-  password?: string;
+  email: string;
+  password: string;
 }
 
 export default function SignIn() {
-  const { handleSubmit, register, errors } = useForm();
-  const signInWithEmailAndPassword = (values: SignInProps) => {
-    //TODO implement sign in with email & password
+  const { handleSubmit, register, errors } = useForm<SignInProps>();
+  const { addToast } = useToasts();
+  const { push } = useHistory();
+
+  const signInWithEmailAndPassword = async (values: SignInProps) => {
+    try {
+      let { email, password } = values;
+      await auth.signInWithEmailAndPassword(email, password);
+      push("/boxes");
+    } catch ({ message }) {
+      addToast(message, {
+        appearance: "error",
+        autoDismiss: true,
+      });
+    }
   };
   return (
     <div className="bg-gray-100 p-4 pt-40 h-screen justify-center align-middle flex">

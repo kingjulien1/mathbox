@@ -1,11 +1,11 @@
 import * as React from "react";
-import { BoxesNavBar } from "../components/NavBar";
-import { BoxCard } from "../components/BoxCard";
+import { NavBar } from "../components/NavBar";
+import { BoxCard, CreateBoxCard } from "../components/BoxCard";
 
 const Boxes: React.FunctionComponent = () => {
   return (
     <div>
-      <BoxesNavBar></BoxesNavBar>
+      <NavBar title="Mathbox"></NavBar>
       <div className="flex justify-center overflow-auto  ">
         <div className="p-10 max-w-screen-xl flex w-full flex-col">
           <div className="py-4">
@@ -13,8 +13,12 @@ const Boxes: React.FunctionComponent = () => {
               Your Boxes
             </h2>
             <div className="mt-10 flex flex-row flex-wrap">
-              {[1, 1, 1, 1, 1, 1].map(() => (
+              <div className="flex flex-col w-full items-center">
+                <CreateBoxCard></CreateBoxCard>
+              </div>
+              {[1, 2, 3, 4, 5, 6].map((i) => (
                 <BoxCard
+                  key={i}
                   _id="asödflkjas"
                   title="Untitled Box"
                   lastEdited="12.04.2020"
@@ -27,8 +31,9 @@ const Boxes: React.FunctionComponent = () => {
               Boxes You are collaborating on
             </h2>
             <div className="mt-10 flex flex-row flex-wrap">
-              {[1, 1, 1, 1, 1, 1].map(() => (
+              {[1, 2, 3, 4, 5, 6].map((i) => (
                 <BoxCard
+                  key={i}
                   _id="asödflkjas"
                   title="Untitled Box"
                   lastEdited="12.04.2020"

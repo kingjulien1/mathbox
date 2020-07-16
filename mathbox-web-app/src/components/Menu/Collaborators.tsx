@@ -52,6 +52,7 @@ export const Collaborators: React.FunctionComponent = function () {
       </div>
       <Team
         className={`top-0 fill-current h-6 w-6 md:hidden`}
+        tabIndex={3}
         onClick={() => setIsOpen((isopen) => !isopen)}
       ></Team>
     </div>

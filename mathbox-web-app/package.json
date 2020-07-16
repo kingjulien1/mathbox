@@ -16,6 +16,7 @@
     "react-hook-form": "^6.0.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-toast-notifications": "^2.4.0",
     "rxfire": "^3.13.5",
     "rxjs": "^6.6.0",
     "typescript": "~3.7.2"
@@ -45,6 +46,7 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.1.5",
+    "@types/react-toast-notifications": "^2.4.0",
     "autoprefixer": "^9.8.5",
     "postcss-cli": "^7.1.1",
     "tailwindcss": "^1.4.6"

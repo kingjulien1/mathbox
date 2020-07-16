@@ -2,6 +2,7 @@ import * as React from "react";
 import firebase from "firebase/app";
 import { auth } from "../firebase";
 import { ReactComponent as Google } from "../assets/img/google.svg";
+import { useHistory } from "react-router-dom";
 
 const Button: React.FunctionComponent<{
   className?: string;
@@ -23,14 +24,13 @@ const SignInWtihGoogleButton: React.FunctionComponent<{
     | ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
     | undefined;
 }> = ({ children, className, onClick }) => {
+  const { push } = useHistory();
   const signInWithPopUp = async () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     try {
       await auth.signInWithPopup(provider);
-      //TODO redirect to board
-    } catch (e) {
-      console.error(e);
-    }
+      push("/boxes");
+    } catch (e) {}
   };
   return (
     <Button className={` ${className}`} onClick={signInWithPopUp}>

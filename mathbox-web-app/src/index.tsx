@@ -2,10 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./assets/main.css";
 import Router from "./routes";
+import { ToastProvider } from "react-toast-notifications";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <ToastProvider>
     <Router></Router>
-  </React.StrictMode>,
+  </ToastProvider>,
   document.getElementById("root")
 );

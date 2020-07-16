@@ -3,9 +3,13 @@ import { authState } from "rxfire/auth";
 import { User } from "firebase";
 import { auth } from "../../firebase";
 
-export const useLoggedInUser = () => {
+export const useLoggedInUser: () => {
+  user?: User;
+  isLoading?: boolean;
+} = () => {
   const [isLoading, setIsLoading] = useState<boolean>();
   const [user, setUser] = useState<User | undefined>();
+
   useEffect(() => {
     const subscription = authState(auth).subscribe((user) => {
       setIsLoading(false);
@@ -16,5 +20,3 @@ export const useLoggedInUser = () => {
   }, []);
   return { user, isLoading };
 };
-
-export const useSignInWithEmailAndPassword: {} = () => {};

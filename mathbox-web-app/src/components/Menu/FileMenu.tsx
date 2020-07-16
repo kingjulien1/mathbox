@@ -5,10 +5,13 @@ import { ReactComponent as Export } from "../../assets/img/export.svg";
 import { ReactComponent as Grid } from "../../assets/img/grid.svg";
 import { ReactComponent as Brightness } from "../../assets/img/brightness.svg";
 
+const menuItemClass =
+  "fill-current h-6 w-6 mb-10 inline-block hover:shadow-outline focus:shadow-outline ";
+
 export const FileMenu: React.FunctionComponent<{}> = function () {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
   return (
-    <div className="z-10 top-0 right-0 mt-20 mr-4 inline-block absolute p-2 text-gray-700 cursor-pointer bg-gray-200 rounded-lg shadow-lg">
+    <div className="z-10 top-0 right-0 mt-24 mr-4 inline-block absolute p-2 text-gray-700 cursor-pointer bg-gray-200 rounded-lg shadow-lg">
       <Close
         className={`top-0 fill-current h-6 w-6 mb-10 ${
           isOpen ? "block" : "hidden"
@@ -26,9 +29,9 @@ export const FileMenu: React.FunctionComponent<{}> = function () {
           isOpen ? "inline-block" : "hidden"
         } sm:inline-block`}
       >
-        <Export className="fill-current inline-block h-6 w-6 mb-10 "></Export>
-        <Grid className="fill-current inline-block h-6 w-6 mb-10"></Grid>
-        <Brightness className="fill-current inline-block  h-6 w-6 "></Brightness>
+        <Export tabIndex={2} className={menuItemClass}></Export>
+        <Grid tabIndex={2} className={menuItemClass}></Grid>
+        <Brightness tabIndex={2} className={menuItemClass}></Brightness>
       </div>
     </div>
   );

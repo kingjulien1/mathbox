@@ -1,6 +1,8 @@
 import * as React from "react";
 import { ReactComponent as Logo } from "../assets/img/package.svg";
 import { ReactComponent as More } from "../assets/img/more.svg";
+import { ReactComponent as Add } from "../assets/img/add.svg";
+import { useHistory } from "react-router-dom";
 
 interface BoxCardProps {
   _id: string;
@@ -18,8 +20,11 @@ export const BoxCard: React.FunctionComponent<BoxCardProps> = ({
   owner,
 }) => {
   return (
-    <div className="py-4 sm:p-4 md:p-4 w-full md:w-1/2 lg:w-1/3 ">
-      <div className="bg-gray-200 rounded-md shadow-lg p-4">
+    <div className="py-4 sm:p-4 md:p-4 w-full md:w-1/2 lg:w-1/3  ">
+      <div
+        tabIndex={2}
+        className="bg-gray-200 rounded-md shadow-lg p-4 w-fullfocus:shadow-outline focus:bg-gray-100 hover:shadow-outline hover:bg-gray-100 "
+      >
         <div className="hidden md:block bg-white rounded-t-lg h-20 "></div>
         <div className="flex flex-row items-center justify-between">
           <div className="flex items-center md:mt-4">
@@ -44,6 +49,26 @@ export const BoxCard: React.FunctionComponent<BoxCardProps> = ({
           <More className="h-8 w-8 text-gray-900 fill-current"></More>
         </div>
       </div>
+    </div>
+  );
+};
+
+export const CreateBoxCard: React.FunctionComponent = () => {
+  const { push } = useHistory();
+  return (
+    <div className="py-4 sm:p-4 md:p-4 w-full md:w-1/2 lg:w-1/3">
+      <button
+        tabIndex={2}
+        className="bg-gray-200 rounded-md shadow-lg p-4 cursor-pointer hover:shadow-outline w-full focus:shadow-outline focus:outline-none focus:bg-gray-100 hover:bg-gray-100 hover:border-gray-900 "
+        onClick={() => {
+          push("/box");
+        }}
+      >
+        <div className="flex justify-center">
+          <Add></Add>
+          <p className="text-gray-900 ">Create Box</p>
+        </div>
+      </button>
     </div>
   );
 };

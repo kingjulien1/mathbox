@@ -1,11 +1,32 @@
 import * as React from "react";
 import { Button, SignInWtihGoogleButton } from "../components/Button";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useToasts } from "react-toast-notifications";
+import { auth } from "../firebase";
+
+interface SignUpProps {
+  email: string;
+  password: string;
+}
 
 export default function SignUp() {
-  const { handleSubmit, register, errors } = useForm();
-  const onSubmit = (values: any) => console.log(values);
+  const { handleSubmit, register, errors } = useForm<SignUpProps>();
+  const { addToast } = useToasts();
+  const { push } = useHistory();
+
+  const signUpWithEmailAndPassword = async (values: SignUpProps) => {
+    try {
+      let { email, password } = values;
+      await auth.createUserWithEmailAndPassword(email, password);
+      push("/boxes");
+    } catch ({ message }) {
+      addToast(message, {
+        appearance: "error",
+        autoDismiss: true,
+      });
+    }
+  };
   return (
     <div className="bg-gray-100 p-4 pt-40 h-screen justify-center align-middle flex">
       <div className="flex flex-col w-full max-w-md">
@@ -15,7 +36,7 @@ export default function SignUp() {
         <div className="flex flex-col justify-center mt-10">
           <form
             className="m-auto flex flex-col w-full p-4"
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(signUpWithEmailAndPassword)}
           >
             <span className="mb-1 text-center text-red-500">
               {errors.email && errors.email.message}

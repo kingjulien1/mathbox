@@ -7,12 +7,15 @@ import { ReactComponent as Palette } from "../../assets/img/palette.svg";
 import { ReactComponent as Cube } from "../../assets/img/cube.svg";
 import { ReactComponent as Close } from "../../assets/img/close.svg";
 
+const menuItemClass =
+  "fill-current h-6 w-6 mb-10 inline-block hover:shadow-outline focus:shadow-outline ";
+
 export const ToolsMenu: React.FunctionComponent<{
   className?: string;
 }> = function ({ className }) {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
   return (
-    <div className="z-10 top-0 left-0 mt-20 ml-4 inline-block absolute p-2 text-gray-700 cursor-pointer bg-gray-200 rounded-lg shadow-lg">
+    <div className="z-10 top-0 left-0 mt-24 ml-4 inline-block absolute p-2 text-gray-700 cursor-pointer bg-gray-200 rounded-lg shadow-lg">
       <Close
         className={`top-0 fill-current h-6 w-6 mb-10 ${
           isOpen ? "block" : "hidden"
@@ -30,11 +33,11 @@ export const ToolsMenu: React.FunctionComponent<{
           isOpen ? "inline-block" : "hidden"
         } sm:inline-block`}
       >
-        <Drag className="fill-current h-6 w-6 mb-10 inline-block "></Drag>
-        <Pen className="fill-current h-6 w-6 mb-10 inline-block"></Pen>
-        <Erase className="fill-current h-6 w-6 mb-10 inline-block"></Erase>
-        <Palette className="fill-current h-6 w-6 mb-10 inline-block"></Palette>
-        <Cube className="fill-current h-6 w-6 inline-block"></Cube>
+        <Drag tabIndex={2} className={menuItemClass}></Drag>
+        <Pen tabIndex={2} className={menuItemClass}></Pen>
+        <Erase tabIndex={2} className={menuItemClass}></Erase>
+        <Palette tabIndex={2} className={menuItemClass}></Palette>
+        <Cube tabIndex={2} className={menuItemClass}></Cube>
       </div>
     </div>
   );
