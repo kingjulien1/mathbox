@@ -1,8 +1,8 @@
 import React from "react";
+import { useHistory, Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../assets/img/package.svg";
 import { ReactComponent as Add } from "../assets/img/add.svg";
 import { Button } from "../components/Button";
-import { useHistory, Link } from "react-router-dom";
 
 function Home() {
   const { push } = useHistory();

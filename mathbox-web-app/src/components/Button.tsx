@@ -1,8 +1,8 @@
 import * as React from "react";
 import firebase from "firebase/app";
+import { useHistory } from "react-router-dom";
 import { auth } from "../firebase";
 import { ReactComponent as Google } from "../assets/img/google.svg";
-import { useHistory } from "react-router-dom";
 
 const Button: React.FunctionComponent<{
   className?: string;

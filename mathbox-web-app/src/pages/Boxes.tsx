@@ -5,7 +5,7 @@ import { BoxCard, CreateBoxCard } from "../components/BoxCard";
 const Boxes: React.FunctionComponent = () => {
   return (
     <div>
-      <NavBar title="Mathbox"></NavBar>
+      <NavBar title="Boxes"></NavBar>
       <div className="flex justify-center overflow-auto  ">
         <div className="p-10 max-w-screen-xl flex w-full flex-col">
           <div className="py-4">

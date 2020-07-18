@@ -9,7 +9,7 @@ export default function Board() {
   return (
     <div className="static flex flex-col h-screen">
       <div>
-        <NavBar title="Mathbox"></NavBar>
+        <NavBar title="Untitled Box"></NavBar>
         <ToolsMenu></ToolsMenu>
         <FileMenu></FileMenu>
         <Collaborators></Collaborators>

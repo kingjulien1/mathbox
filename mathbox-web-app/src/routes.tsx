@@ -5,6 +5,7 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Box from "./pages/Box";
 import Boxes from "./pages/Boxes";
+import Profile from "./pages/Profile/Profile";
 
 export default function Routes() {
   return (
@@ -14,6 +15,7 @@ export default function Routes() {
         <Route path="/signin" exact component={SignIn}></Route>
         <Route path="/boxes" exact component={Boxes}></Route>
         <Route path="/box" exact component={Box}></Route>
+        <Route path="/profile" exact component={Profile}></Route>
         <Route path="/" exact component={Home}></Route>
       </Switch>
     </BrowserRouter>

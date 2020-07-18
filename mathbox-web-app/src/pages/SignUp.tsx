@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Button, SignInWtihGoogleButton } from "../components/Button";
 import { useForm } from "react-hook-form";
 import { Link, useHistory } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
+import { Button, SignInWtihGoogleButton } from "../components/Button";
 import { auth } from "../firebase";
 
 interface SignUpProps {

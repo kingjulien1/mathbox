@@ -1,7 +1,6 @@
 import * as React from "react";
 import { ReactComponent as Team } from "../../assets/img/team.svg";
 import { ReactComponent as PersonAdd } from "../../assets/img/person-add.svg";
-import Avatar from "../Avatar";
 
 export const Collaborators: React.FunctionComponent = function () {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
@@ -20,30 +19,31 @@ export const Collaborators: React.FunctionComponent = function () {
             </div>
           </div>
           <div className="relative mb-4 inline-block md:flex">
-            <Avatar
-              className="h-6 w-6"
-              url="https://vignette.wikia.nocookie.net/house-of-cards/images/1/17/Francis_Underwood.jpg/revision/latest/top-crop/width/360/height/450?cb=20170625143104&path-prefix=de"
-            ></Avatar>
+            <img
+              className="h-6 w-6 object-contain bg-gray-700 font-semibold text-gray-100 rounded-full"
+              alt="frank"
+              src="https://vignette.wikia.nocookie.net/house-of-cards/images/1/17/Francis_Underwood.jpg/revision/latest/top-crop/width/360/height/450?cb=20170625143104&path-prefix=de"
+            ></img>
             <p className="hidden whitespace-no-wrap md:block ml-2 text-gray-500 text-base italic">
               Frank (You)
             </p>
           </div>
           <div className="relative mb-4 inline-block md:flex">
-            <Avatar
-              className="h-6 w-6"
-              name="Zoe Barnes"
-              url="https://i.pinimg.com/originals/97/14/37/97143785239ca2686ef7f5003babed7d.jpg"
-            ></Avatar>
+            <img
+              className="h-6 w-6 object-contain bg-gray-700 font-semibold text-gray-100 rounded-full"
+              alt="zoe"
+              src="https://i.pinimg.com/originals/97/14/37/97143785239ca2686ef7f5003babed7d.jpg"
+            ></img>
             <p className="hidden md:block ml-2 text-gray-500 text-base italic">
               Zoe
             </p>
           </div>
           <div className="relative mb-4 inline-block md:flex">
-            <Avatar
-              className="h-6 w-6"
-              name="Claire Underwood"
-              url="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F35%2F2014%2F03%2F16182657%2Fcarrie-underwood-promo-700.jpg&q=85"
-            ></Avatar>
+            <img
+              className="h-6 w-6 object-contain bg-gray-700 font-semibold text-gray-100 rounded-full"
+              alt="Claire Underwood"
+              src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F35%2F2014%2F03%2F16182657%2Fcarrie-underwood-promo-700.jpg&q=85"
+            ></img>
             <p className="hidden md:block ml-2 text-gray-500 text-base italic">
               Claire
             </p>
