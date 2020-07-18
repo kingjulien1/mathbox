@@ -70,7 +70,8 @@ const SecuritySettings: React.FunctionComponent = () => {
                   className="my-3 text-base text-gray-500 font-normal py-1 px-4 rounded-lg border-2 border-gray-400 shadow-lg focus:outline-none focus:shadow-outline focus:border-opacity-0 hover:border-opacity-0 hover:shadow-outline placeholder-gray-400"
                   autoComplete="bg-gray-100 shadow-outline"
                   ref={register({
-                    validate: (value) => value === watch("newpass"),
+                    validate: (value) =>
+                      value === watch("newpass") || "passwords must match",
                   })}
                 />
               </div>
@@ -81,7 +82,7 @@ const SecuritySettings: React.FunctionComponent = () => {
                 including a number and a lowercase letter.
               </p>
               <Button className="mt-4 bg-gray-800 text-gray-100">
-                Update Profile
+                Update Passwords
               </Button>
             </div>
           </form>
