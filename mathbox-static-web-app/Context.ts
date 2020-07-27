@@ -1,4 +1,5 @@
-import { createContext } from "react";
+import { createContext, Dispatch, SetStateAction } from "react";
+
 export type Tool =
   | "pen"
   | "palette"
@@ -9,6 +10,9 @@ export type Tool =
   | "export"
   | "team";
 
-export const CurrentToolContext = createContext<Tool>(null);
+interface ToolBoxContextProps {
+  currentTool: Tool;
+  setCurrentTool?: Dispatch<SetStateAction<Tool>>;
+}
 
-export const SetCurrentToolContext = createContext<(tool: Tool) => void>(null);
+export const ToolsContext = createContext<ToolBoxContextProps>(null);

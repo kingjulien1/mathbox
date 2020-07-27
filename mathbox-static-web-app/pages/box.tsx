@@ -2,22 +2,22 @@ import Head from "next/head";
 import { useState } from "react";
 import NavBar from "../components/nav/NavBar";
 import ToolBar from "../components/nav/ToolBar";
-import { Tool, SetCurrentToolContext, CurrentToolContext } from "../Context";
+import Canvas from "../components/canvas/Canvas";
+import { Tool, ToolsContext } from "../Context";
 
 export default function Box({ props }) {
-  const [currentTool, setCurrentTool] = useState<Tool>();
-  console.log("from box: " + currentTool);
+  const [currentTool, setCurrentTool] = useState<Tool>("pen");
   return (
-    <div>
+    <div className="h-screen flex flex-col">
       <Head>
         <title>Box</title>
       </Head>
-      <NavBar></NavBar>
-      <CurrentToolContext.Provider value={currentTool}>
-        <SetCurrentToolContext.Provider value={setCurrentTool}>
-          <ToolBar></ToolBar>
-        </SetCurrentToolContext.Provider>
-      </CurrentToolContext.Provider>
+      <ToolsContext.Provider value={{ currentTool, setCurrentTool }}>
+        <ToolBar></ToolBar>
+      </ToolsContext.Provider>
+      <ToolsContext.Provider value={{ currentTool }}>
+        <Canvas></Canvas>
+      </ToolsContext.Provider>
     </div>
   );
 }

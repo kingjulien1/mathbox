@@ -1,4 +1,5 @@
-import { useContext, FunctionComponent, MouseEvent } from "react";
+import { useContext, FunctionComponent } from "react";
+import { ToolsContext, Tool } from "../../Context";
 import Pen from "../../public/icons/pen.svg";
 import Palette from "../../public/icons/palette.svg";
 import Eraser from "../../public/icons/eraser.svg";
@@ -7,24 +8,19 @@ import Omega from "../../public/icons/Omega.svg";
 import Drag from "../../public/icons/drag.svg";
 import Export from "../../public/icons/download.svg";
 import Team from "../../public/icons/team.svg";
-import { CurrentToolContext, SetCurrentToolContext, Tool } from "../../Context";
 
 interface ToolItemProps {
   Icon: FunctionComponent<React.SVGAttributes<SVGElement>>;
-  onClick?: (name: string) => void;
+  onClick?: () => void;
   name: Tool;
 }
 
-const ToolItem: FunctionComponent<ToolItemProps> = ({
-  Icon,
-  onClick,
-  name,
-}) => {
+const ToolItem: FunctionComponent<ToolItemProps> = ({ Icon, onClick }) => {
   return (
     <Icon
-      className="h-4 w-4 fill-current mr-8 my-2 cursor-pointer focus:outline-none hover:shadow-outline focus:shadow-outline"
+      className="h-4 w-4 fill-current my-4 cursor-pointer focus:outline-none hover:shadow-outline focus:shadow-outline"
       tabIndex={1}
-      onClick={() => onClick(name)}
+      onClick={() => (onClick ? onClick() : null)}
     ></Icon>
   );
 };
@@ -40,21 +36,16 @@ const tools: ToolItemProps[] = [
 ];
 
 export default function ToolBar() {
-  const setCurrentTool = useContext(SetCurrentToolContext);
-  const currentTool = useContext(CurrentToolContext);
-  console.log("from toolbox" + currentTool);
-
+  const { currentTool, setCurrentTool } = useContext(ToolsContext);
   return (
-    <nav className="px-6 py-1 bg-gray-300 flex items-center text-gray-900 sm:justify-between">
-      <div className="flex flex-wrap justify-center">
-        {tools.map((tool) => (
-          <ToolItem {...tool} onClick={() => setCurrentTool(tool.name)} />
-        ))}
-      </div>
-      <div className="hidden sm:flex items-center">
-        <ToolItem Icon={Team} name="team"></ToolItem>
-        <span className="ml-2 text-gray-600 uppercase font-light">(2)</span>
-      </div>
+    <nav className="ml-4 px-2 my-2 mx-2 flex flex-col items-center text-gray-900 sm:justify-between absolute top-0 left-0 z-10 rounded-lg bg-gray-100 shadow-lg">
+      {tools.map((tool) => (
+        <ToolItem
+          key={tool.name}
+          {...tool}
+          onClick={() => setCurrentTool(tool.name)}
+        />
+      ))}
     </nav>
   );
 }
