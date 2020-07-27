@@ -7,7 +7,6 @@ import Functions from "../../public/icons/functions.svg";
 import Omega from "../../public/icons/Omega.svg";
 import Drag from "../../public/icons/drag.svg";
 import Export from "../../public/icons/download.svg";
-import Team from "../../public/icons/team.svg";
 
 interface ToolItemProps {
   Icon: FunctionComponent<React.SVGAttributes<SVGElement>>;
