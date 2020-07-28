@@ -3,10 +3,10 @@ import { useState } from "react";
 import NavBar from "../components/nav/NavBar";
 import ToolBar from "../components/nav/ToolBar";
 import Canvas from "../components/canvas/Canvas";
-import { Tool, ToolsContext } from "../Context";
+import { Tools, ToolsContext } from "../Context";
 
 export default function Box({ props }) {
-  const [currentTool, setCurrentTool] = useState<Tool>("pen");
+  const [currentTool, setCurrentTool] = useState<Tools>({ name: "pen" });
   return (
     <div className="h-screen flex flex-col">
       <Head>

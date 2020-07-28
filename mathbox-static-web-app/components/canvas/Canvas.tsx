@@ -11,7 +11,10 @@ export default function Canvas() {
   const layerRef = useRef<Layer>();
   const stageRef = useRef<Stage>();
 
-  const { startDrawing, draw, finishDrawing } = usePen(layerRef);
+  const [startDrawing, draw, finishDrawing] = usePen(
+    layerRef,
+    currentTool.options
+  );
 
   useEffect(() => {
     //set height at mounting time
@@ -20,16 +23,18 @@ export default function Canvas() {
       width: window.innerWidth,
       container: "stage",
     });
+    //create and add layer
     layerRef.current = new Konva.Layer();
     stageRef.current.add(layerRef.current);
   }, []);
 
   useEffect(() => {
-    switch (currentTool) {
+    switch (currentTool.name) {
       case "pen":
-        stageRef.current.getStage().on("mousedown touchstart", startDrawing);
-        stageRef.current.getStage().on("mousemove touchmove", draw);
-        stageRef.current.getStage().on("mouseup touchend", finishDrawing);
+        stageRef.current
+          .on("mousedown touchstart", startDrawing)
+          .on("mousemove touchmove", draw)
+          .on("mouseup touchend", finishDrawing);
         break;
       case "eraser":
         break;
