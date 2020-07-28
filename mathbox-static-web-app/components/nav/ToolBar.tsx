@@ -4,14 +4,15 @@ import Pen from "../../public/icons/pen.svg";
 import PaletteIcon from "../../public/icons/palette.svg";
 import Eraser from "../../public/icons/eraser.svg";
 import Functions from "../../public/icons/functions.svg";
-import Omega from "../../public/icons/Omega.svg";
+import Omega from "../../public/icons/omega.svg";
 import Drag from "../../public/icons/drag.svg";
 import Export from "../../public/icons/download.svg";
+import { defaultLineConfig } from "../canvas/usePen";
 
 interface ToolItemProps {
+  tool: Tools;
   Icon: FunctionComponent<React.SVGAttributes<SVGElement>>;
   onClick?: () => void;
-  tool: Tools;
   active?: boolean;
 }
 
@@ -22,7 +23,7 @@ const ToolItem: FunctionComponent<ToolItemProps> = ({
 }) => {
   return (
     <Icon
-      className={`h-4 w-4 fill-current my-4 cursor-pointer focus:outline-none hover:shadow-outline focus:shadow-outline ${
+      className={`h-4 w-4 fill-current my-4 cursor-pointer focus:outline-none hover:text-blue-700 focus:text-blue-700 ${
         active ? "text-blue-500" : ""
       }`}
       tabIndex={1}
@@ -35,7 +36,7 @@ const tools: ToolItemProps[] = [
   {
     Icon: Pen,
     //default options for pen
-    tool: { name: "pen", options: { strokeWidth: 5, stroke: Palette.default } },
+    tool: { name: "pen", options: { ...defaultLineConfig } },
     active: true,
   },
   { Icon: PaletteIcon, tool: { name: "palette" } },

@@ -2,12 +2,13 @@ import { RefObject, useRef } from "react";
 import Konva from "konva";
 import { Line } from "konva/types/shapes/Line";
 import { Layer } from "konva/types/Layer";
-import { ToolOptions } from "../../Context";
+import { ToolOptions, Palette } from "../../Context";
 
-const lineConfig = {
+export const defaultLineConfig = {
   strokeWidth: 2,
-  stroke: "#1A202C",
+  stroke: Palette.default,
   bezier: true,
+  draggable: true,
   globalCompositeOperation: "source-over",
 } as const;
 
@@ -19,7 +20,7 @@ export const usePen = (layerRef: RefObject<Layer>, options: ToolOptions) => {
     isDrawing.current = true;
     let { x, y } = layerRef.current.getStage().getPointerPosition();
     line.current = new Konva.Line({
-      ...lineConfig,
+      ...defaultLineConfig,
       ...options,
       points: [x, y],
     });
