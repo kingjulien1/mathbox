@@ -18,7 +18,7 @@ export const PenMenu: FunctionComponent<MenuProps> = memo(({ isOpen, setIsOpen }
     options: { strokeWidth, stroke },
     setOptions,
   } = useContext(OptionsContext)
-  const [currentStrokeWidth, setCurrentStrokeWidth] = useState(strokeWidth)
+  const [currentStrokeWidth, setCurrentStrokeWidth] = useState(() => strokeWidth)
   console.log(stroke)
 
   return (
@@ -33,8 +33,8 @@ export const PenMenu: FunctionComponent<MenuProps> = memo(({ isOpen, setIsOpen }
           ></button>
         ))}
       </div>
-      <span className="px-2 py-1 flex flex-row">
-        <span>{currentStrokeWidth}</span>
+      <span className="px-2 py-1 flex">
+        <span className="text-blue-500 mr-2">{currentStrokeWidth}</span>
         <input
           type="range"
           min={1}

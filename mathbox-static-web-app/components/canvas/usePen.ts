@@ -1,4 +1,4 @@
-import { RefObject, useRef } from 'react'
+import { RefObject, useRef, memo } from 'react'
 import Konva from 'konva'
 import { Line } from 'konva/types/shapes/Line'
 import { Layer } from 'konva/types/Layer'
@@ -7,6 +7,7 @@ import { Palette, Options } from '../../Context'
 export const defaultLineConfig = {
   bezier: true,
   draggable: true,
+  hitStrokeWidth: 20,
   globalCompositeOperation: 'source-over',
 } as const
 
@@ -17,7 +18,7 @@ export const defaultOptions: Options = {
 } as const
 
 export const usePen = (layerRef: RefObject<Layer>, optionsRef: RefObject<Options>) => {
-  console.log(optionsRef.current)
+  console.log('usepen rr')
   const isDrawing = useRef(false)
   const line = useRef<Line>(null)
 
@@ -41,7 +42,7 @@ export const usePen = (layerRef: RefObject<Layer>, optionsRef: RefObject<Options
 
   const end = () => {
     isDrawing.current = false
-    line.current?.cache()
+    line.current.on('mouseover', console.log)
     line.current = null
   }
 

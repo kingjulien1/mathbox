@@ -1,13 +1,15 @@
 import { useContext, useRef, useEffect } from 'react'
-import Konva from 'konva'
 import { Layer } from 'konva/types/Layer'
+import { Stage } from 'konva/types/Stage'
+import Konva from 'konva'
 import { ToolsContext, OptionsContext, Options } from '../../Context'
 import { usePen } from './usePen'
-import { Stage } from 'konva/types/Stage'
+import { useEraser } from './useEraser'
 
 export default function Canvas() {
   const { tool } = useContext(ToolsContext)
   const { options } = useContext(OptionsContext)
+  console.log('canvas rr', { options })
 
   const optionsRef = useRef<Options>(options)
   const layerRef = useRef<Layer>()
@@ -16,8 +18,6 @@ export default function Canvas() {
   useEffect(() => {
     optionsRef.current = options
   }, [options])
-
-  const [startDrawing, draw, finishDrawing] = usePen(layerRef, optionsRef)
 
   useEffect(() => {
     //set height at mounting time
@@ -31,14 +31,15 @@ export default function Canvas() {
     stageRef.current.add(layerRef.current)
   }, [])
 
+  const [startDrawing, draw, finishDrawing] = usePen(layerRef, optionsRef)
+  const [startErasing, erase, finishErasing] = useEraser(stageRef, optionsRef)
+
   useEffect(() => {
-    switch (tool) {
-      case 'pen':
-        //add listeners for pen tool
-        stageRef.current.on('mousedown touchstart', startDrawing).on('mousemove touchmove', draw).on('mouseup touchend', finishDrawing)
-        break
-      case 'eraser':
-        break
+    stageRef.current.removeEventListener('mousedown touchstart mousemove touchmove mouseup touchend')
+    if (tool === 'pen') {
+      stageRef.current.on('mousedown touchstart', startDrawing).on('mousemove touchmove', draw).on('mouseup touchend', finishDrawing)
+    } else if (tool) {
+      stageRef.current.on('mousedown touchstart', startErasing).on('mousemove touchmove', erase).on('mouseup touchend', finishErasing)
     }
   }, [tool])
 
