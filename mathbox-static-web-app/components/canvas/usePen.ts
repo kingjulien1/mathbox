@@ -18,7 +18,6 @@ export const defaultOptions: Options = {
 } as const
 
 export const usePen = (layerRef: RefObject<Layer>, optionsRef: RefObject<Options>) => {
-  console.log('usepen rr')
   const isDrawing = useRef(false)
   const line = useRef<Line>(null)
 

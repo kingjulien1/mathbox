@@ -1,10 +1,5 @@
-import { memo, FunctionComponent, Dispatch, SetStateAction, useState, useContext } from 'react'
+import { memo, FunctionComponent, useState, useContext, RefObject } from 'react'
 import { Palette, OptionsContext } from '../../Context'
-
-export interface MenuProps {
-  isOpen: boolean
-  setIsOpen: Dispatch<SetStateAction<boolean>>
-}
 
 //skeleton for other menus
 const Menu: FunctionComponent<{ isOpen: boolean }> = ({ children, isOpen }) => {
@@ -13,16 +8,13 @@ const Menu: FunctionComponent<{ isOpen: boolean }> = ({ children, isOpen }) => {
   )
 }
 
-export const PenMenu: FunctionComponent<MenuProps> = memo(({ isOpen, setIsOpen }) => {
-  const {
-    options: { strokeWidth, stroke },
-    setOptions,
-  } = useContext(OptionsContext)
+export const PenMenu: FunctionComponent<{ isOpen: boolean }> = ({ isOpen }) => {
+  const { options, setOptions } = useContext(OptionsContext)
+  const { stroke, strokeWidth } = options
   const [currentStrokeWidth, setCurrentStrokeWidth] = useState(() => strokeWidth)
-  console.log(stroke)
 
   return (
-    <Menu {...{ isOpen }}>
+    <Menu isOpen={isOpen}>
       <div className="flex flex-wrap">
         {Object.entries(Palette).map(([name, value]) => (
           <button
@@ -47,9 +39,9 @@ export const PenMenu: FunctionComponent<MenuProps> = memo(({ isOpen, setIsOpen }
       </span>
     </Menu>
   )
-})
+}
 
-export const EraserMenu: FunctionComponent<MenuProps> = memo(({ onClickHandler, isOpen }) => {
+export const EraserMenu: FunctionComponent<MenuProps> = ({ onClickHandler, isOpen }) => {
   return (
     <Menu {...{ isOpen }}>
       <span className="px-4 py-1 flex flex-col">
@@ -57,7 +49,7 @@ export const EraserMenu: FunctionComponent<MenuProps> = memo(({ onClickHandler, 
       </span>
     </Menu>
   )
-})
+}
 
 export const FunctionMenu: FunctionComponent<MenuProps> = memo(({ onClickHandler, isOpen }) => {
   return (

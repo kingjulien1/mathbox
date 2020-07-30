@@ -9,7 +9,6 @@ import { useEraser } from './useEraser'
 export default function Canvas() {
   const { tool } = useContext(ToolsContext)
   const { options } = useContext(OptionsContext)
-  console.log('canvas rr', { options })
 
   const optionsRef = useRef<Options>(options)
   const layerRef = useRef<Layer>()
