@@ -32,7 +32,7 @@ export default function Canvas() {
   }, [])
 
   const [startDrawing, draw, finishDrawing] = usePen(layerRef, optionsRef)
-  const [startErasing, erase, finishErasing] = useEraser(stageRef, optionsRef)
+  const [startErasing, erase, finishErasing] = useEraser(layerRef, optionsRef)
 
   useEffect(() => {
     stageRef.current.removeEventListener('mousedown touchstart mousemove touchmove mouseup touchend')

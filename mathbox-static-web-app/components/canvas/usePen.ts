@@ -7,7 +7,7 @@ import { Palette, Options } from '../../Context'
 export const defaultLineConfig = {
   bezier: true,
   draggable: true,
-  hitStrokeWidth: 20,
+  hitStrokeWidth: 10,
   globalCompositeOperation: 'source-over',
 } as const
 
@@ -42,8 +42,7 @@ export const usePen = (layerRef: RefObject<Layer>, optionsRef: RefObject<Options
 
   const end = () => {
     isDrawing.current = false
-    line.current.on('mouseover', console.log)
-    line.current = null
+    line.current?.cache()
   }
 
   return [start, draw, end]
