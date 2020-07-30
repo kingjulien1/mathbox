@@ -1,6 +1,6 @@
 import { RefObject, useRef } from 'react'
-import { Options } from '../../Context'
 import { Layer } from 'konva/types/Layer'
+import { Options } from '../../Context'
 
 export const useEraser = (layerRef: RefObject<Layer>, optionsRef: RefObject<Options>) => {
   const isErasing = useRef(false)

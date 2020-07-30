@@ -1,4 +1,4 @@
-import { RefObject, useRef, memo } from 'react'
+import { RefObject, useRef } from 'react'
 import Konva from 'konva'
 import { Line } from 'konva/types/shapes/Line'
 import { Layer } from 'konva/types/Layer'

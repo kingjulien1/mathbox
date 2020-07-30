@@ -1,4 +1,4 @@
-import { useContext, useRef, useEffect } from 'react'
+import { useContext, useRef, useEffect, useCallback } from 'react'
 import { Layer } from 'konva/types/Layer'
 import { Stage } from 'konva/types/Stage'
 import Konva from 'konva'
@@ -30,17 +30,26 @@ export default function Canvas() {
     stageRef.current.add(layerRef.current)
   }, [])
 
-  const [startDrawing, draw, finishDrawing] = usePen(layerRef, optionsRef)
-  const [startErasing, erase, finishErasing] = useEraser(layerRef, optionsRef)
+  //eventlisteners
+  const [penStart, pen, penEnd] = usePen(layerRef, optionsRef)
+  const [eraserStart, eraser, eraserEnd] = useEraser(layerRef, optionsRef)
+  const handlerStart = useRef(penStart)
+  const handler = useRef(pen)
+  const handlerEnd = useRef(penEnd)
 
+  //change handlers if function changes
   useEffect(() => {
-    stageRef.current.removeEventListener('mousedown touchstart mousemove touchmove mouseup touchend')
-    if (tool === 'pen') {
-      stageRef.current.on('mousedown touchstart', startDrawing).on('mousemove touchmove', draw).on('mouseup touchend', finishDrawing)
-    } else if (tool) {
-      stageRef.current.on('mousedown touchstart', startErasing).on('mousemove touchmove', erase).on('mouseup touchend', finishErasing)
-    }
+    if (tool === 'pen') [handlerStart.current, handler.current, handlerEnd.current] = [penStart, pen, penEnd]
+    if (tool === 'eraser') [handlerStart.current, handler.current, handlerEnd.current] = [eraserStart, eraser, eraserEnd]
   }, [tool])
+
+  //add Eventhandlers
+  useEffect(() => {
+    stageRef.current
+      .on('mousedown touchstart', () => handlerStart.current())
+      .on('mousemove touchmove', () => handler.current())
+      .on('mouseup touchend', () => handlerEnd.current())
+  }, [])
 
   return <div id="stage"></div>
 }

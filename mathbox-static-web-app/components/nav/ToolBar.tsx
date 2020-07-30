@@ -2,13 +2,15 @@ import { useContext, FunctionComponent, Dispatch, useState, createContext, useMe
 import { ToolsContext, Tool } from '../../Context'
 import { ToolItemProps, tools } from './Tools'
 
-export const activeToolItem = createContext<{ active: Tool; setActive: Dispatch<Tool> }>(null)
+const activeToolItem = createContext<{ active: Tool; setActive: Dispatch<Tool> }>(null)
 
 const ToolItem: FunctionComponent<ToolItemProps> = ({ Icon, Menu, tool }) => {
   const { setTool } = useContext(ToolsContext)
   const { active, setActive } = useContext(activeToolItem)
   const [isOpen, setIsOpen] = useState(false)
+  //memo to keep track if this toolItem is active
   const isActive = useMemo(() => active === tool, [active])
+  //usage for menu: should only be open if this tool is also active
   const isOpenMemo = useMemo(() => isOpen && isActive, [isOpen, isActive])
 
   console.log('rerender')
