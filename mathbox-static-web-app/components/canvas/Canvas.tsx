@@ -1,4 +1,4 @@
-import { useContext, useRef, useEffect, useCallback } from 'react'
+import { useContext, useRef, useEffect } from 'react'
 import { Layer } from 'konva/types/Layer'
 import { Stage } from 'konva/types/Stage'
 import Konva from 'konva'
@@ -20,11 +20,8 @@ export default function Canvas() {
 
   useEffect(() => {
     //set height at mounting time
-    stageRef.current = new Konva.Stage({
-      height: window.innerHeight,
-      width: window.innerWidth,
-      container: 'stage',
-    })
+    let { innerHeight: height, innerWidth: width } = window
+    stageRef.current = new Konva.Stage({ height, width, container: 'stage' })
     //create and add layer
     layerRef.current = new Konva.Layer()
     stageRef.current.add(layerRef.current)
@@ -39,8 +36,10 @@ export default function Canvas() {
 
   //change handlers if function changes
   useEffect(() => {
+    stageRef.current.draggable(false)
     if (tool === 'pen') [handlerStart.current, handler.current, handlerEnd.current] = [penStart, pen, penEnd]
-    if (tool === 'eraser') [handlerStart.current, handler.current, handlerEnd.current] = [eraserStart, eraser, eraserEnd]
+    else if (tool === 'eraser') [handlerStart.current, handler.current, handlerEnd.current] = [eraserStart, eraser, eraserEnd]
+    else if (tool === 'drag') stageRef.current.draggable(true)
   }, [tool])
 
   //add Eventhandlers
